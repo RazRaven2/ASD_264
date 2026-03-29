@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Future Value Calculator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+    <!-- App shell: contains calculator form and the dynamic results area. -->
+    <main class="page">
+        <section class="card">
+            <h1>Future Value Calculator</h1>
+            <p class="subtitle">Estimate the value of monthly investments with compound interest.</p>
+
+            <!-- Input form: values are posted with fetch() in static/app.js. -->
+            <form id="calculator-form" novalidate>
+                <label for="monthly_payment">Monthly Payment</label>
+                <input id="monthly_payment" name="monthly_payment" type="number" step="0.01" min="0" required />
+
+                <label for="years">Number of Years</label>
+                <input id="years" name="years" type="number" step="1" min="0" required />
+
+                <label for="annual_interest_rate">Annual Interest Rate (%)</label>
+                <input id="annual_interest_rate" name="annual_interest_rate" type="number" step="0.01" min="0" required />
+
+                <button type="submit">Calculate</button>
+            </form>
+
+            <!-- Results panel: JS updates these elements after each request. -->
+            <section id="result-panel" class="result-panel" aria-live="polite">
+                <h2>Result</h2>
+                <p id="result-text">Enter values and click Calculate.</p>
+                <p id="error-text" class="error"></p>
+            </section>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
