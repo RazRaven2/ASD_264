@@ -1,0 +1,16 @@
+BEGIN TRANSACTION;
+CREATE TABLE IF NOT EXISTS "Category" (
+	"categoryID"	INTEGER NOT NULL,
+	"name"	TEXT NOT NULL,
+	PRIMARY KEY("categoryID")
+);
+CREATE TABLE IF NOT EXISTS "Movie" (
+	"movieID"	INTEGER NOT NULL,
+	"categoryID"	INTEGER NOT NULL,
+	"name"	TEXT NOT NULL,
+	"year"	INTEGER NOT NULL,
+	"minutes"	INTEGER NOT NULL,
+	PRIMARY KEY("movieID"),
+	FOREIGN KEY("categoryID") REFERENCES "Category"("categoryID")
+);
+COMMIT;
